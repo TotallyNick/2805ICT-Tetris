@@ -27,7 +27,7 @@ public class MenuScreen {
 
         JButton playButton = new JButton("Play");
         JButton configButton = new JButton("Configuration");
-        JButton HighScoreButton = new JButton("HighScore");
+        JButton HighScoreButton = new JButton("HighScores");
         JButton exitButton = new JButton("Exit");
 
 
