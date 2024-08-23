@@ -4,11 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuScreen {
+
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("Menu Screen");
+        JFrame frame = new JFrame("Tetris - Menu Screen");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(550, 800);
         frame.setLocationRelativeTo(null);
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -75,7 +76,7 @@ public class MenuScreen {
 
         panel.add(Box.createRigidArea(new Dimension(0, 50)));
 
-        JLabel authorLabel = new JLabel("Author: Nicholas Webster");
+        JLabel authorLabel = new JLabel("Author: Nicholas Webster - 5178735");
         authorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         authorLabel.setFont(new Font("Arial", Font.ITALIC, 12));
         panel.add(authorLabel);
