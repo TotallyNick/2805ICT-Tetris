@@ -1,25 +1,60 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class HighScores extends JPanel {
 
-    private JFrame frame;
-
     public HighScores(JFrame frame) {
-        this.frame = frame;
         setLayout(new BorderLayout());
 
-        JButton backButton = new JButton("Back to Main Panel");
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setContentPane(new MenuScreen(frame));
-                frame.validate();
-            }
+        // Title
+        JLabel titleLabel = new JLabel("High Scores", JLabel.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        add(titleLabel, BorderLayout.NORTH);
+
+        // Table for displaying scores
+        String[] columnNames = {"First Name", "Score"};
+        Object[][] data = {
+                {"Alice", 659851},
+                {"Bob", 623453},
+                {"Charlie", 598654},
+                {"Diana", 572246},
+                {"Edward", 549885},
+                {"Fiona", 518631},
+                {"George", 483323},
+                {"Hannah", 457947},
+                {"Ian", 422232},
+                {"Jane", 400230}
+        };
+        JTable scoreTable = new JTable(data, columnNames);
+        scoreTable.setFillsViewportHeight(true);
+
+        // Remove grid lines
+        scoreTable.setShowGrid(false);
+        scoreTable.setIntercellSpacing(new Dimension(0, 0));
+        scoreTable.setRowHeight(30); // Adjust row height for better readability
+
+        // Center align text in the table cells
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        scoreTable.setDefaultRenderer(Object.class, centerRenderer);
+
+        JScrollPane scrollPane = new JScrollPane(scoreTable);
+        add(scrollPane, BorderLayout.CENTER);
+
+        // Back Button
+        JButton backButton = new JButton("Back");
+        backButton.setPreferredSize(new Dimension(80, 30)); // Smaller button size
+        backButton.addActionListener(e -> {
+            frame.setContentPane(new MenuScreen(frame)); // Go back to the main menu
+            frame.validate();
         });
 
-        add(backButton, BorderLayout.SOUTH);
+        // Panel to center the back button
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(backButton);
+
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 }
