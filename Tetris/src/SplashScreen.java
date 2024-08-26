@@ -9,7 +9,7 @@ public class SplashScreen extends JWindow {
         content.setBackground(Color.WHITE);
 
         // Set up an image for the splash screen (optional)
-        JLabel splashImage = new JLabel(new ImageIcon("cat.png"));
+        JLabel splashImage = new JLabel(new ImageIcon("src/tetris.png"));
 
         content.add(splashImage, BorderLayout.CENTER);
 

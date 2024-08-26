@@ -83,41 +83,41 @@ public class MenuScreen extends JPanel {
     }
 
     public static void main(String[] args) {
-        // Show the splash screen
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                // Create the splash screen
-                JWindow splash = new JWindow();
-                JPanel splashContent = new JPanel(new BorderLayout());
-                splashContent.setBackground(Color.WHITE);
+        SwingUtilities.invokeLater(() -> {
+            // Create the splash screen
+            JWindow splash = new JWindow();
+            JPanel splashContent = new JPanel(new BorderLayout());
+            splashContent.setBackground(Color.WHITE);
 
-                JLabel splashImage = new JLabel(new ImageIcon("src/cat.png"));
-                splashContent.add(splashImage, BorderLayout.CENTER);
-                splash.setContentPane(splashContent);
-                splash.pack();
+            JLabel splashImage = new JLabel(new ImageIcon("src/tetris.png"));
+            splashContent.add(splashImage, BorderLayout.CENTER);
+            splash.setContentPane(splashContent);
+            splash.pack();
 
-                Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-                int x = (screen.width - splash.getSize().width) / 2;
-                int y = (screen.height - splash.getSize().height) / 2;
-                splash.setLocation(x, y);
-                splash.setVisible(true);
+            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+            int x = (screen.width - splash.getSize().width) / 2;
+            int y = (screen.height - splash.getSize().height) / 2;
+            splash.setLocation(x, y);
+            splash.setVisible(true);
 
-                // Set a timer to close the splash screen and show the main menu
-                new Timer(4000, e -> {
-                    splash.dispose();
-                    // After the splash screen, show the main menu
-                    JFrame frame = new JFrame();
-                    frame.setTitle("Tetris - Menu Screen");
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.setSize(550, 800);
-                    frame.setLocationRelativeTo(null);
+            // Set a timer to close the splash screen and show the main menu
+            Timer timer = new Timer(4000, e -> {
+                splash.dispose(); // Close the splash screen
 
-                    MenuScreen menu = new MenuScreen(frame);
-                    frame.setContentPane(menu); // Set the content pane to your MenuScreen instance
-                    frame.setVisible(true);
-                }).start();
-            }
+                // After the splash screen, show the main menu
+                JFrame frame = new JFrame();
+                frame.setTitle("Tetris - Menu Screen");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(550, 800);
+                frame.setLocationRelativeTo(null);
+
+                MenuScreen menu = new MenuScreen(frame);
+                frame.setContentPane(menu); // Set the content pane to your MenuScreen instance
+                frame.setVisible(true);
+            });
+            timer.setRepeats(false); // Ensure the timer does not repeat
+            timer.start(); // Start the timer
         });
     }
+
 }
