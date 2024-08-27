@@ -29,16 +29,13 @@ public class HighScores extends JPanel {
         JTable scoreTable = new JTable(data, columnNames);
         scoreTable.setFillsViewportHeight(true);
 
-        // Remove grid lines
+        // Table Formatting
         scoreTable.setShowGrid(false);
         scoreTable.setIntercellSpacing(new Dimension(0, 0));
-        scoreTable.setRowHeight(30); // Adjust row height for better readability
-
-        // Center align text in the table cells
+        scoreTable.setRowHeight(30);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         scoreTable.setDefaultRenderer(Object.class, centerRenderer);
-
         JScrollPane scrollPane = new JScrollPane(scoreTable);
         add(scrollPane, BorderLayout.CENTER);
 
@@ -50,11 +47,9 @@ public class HighScores extends JPanel {
             frame.validate();
         });
 
-        // Panel to center the back button
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(backButton);
-
         add(buttonPanel, BorderLayout.SOUTH);
     }
 }

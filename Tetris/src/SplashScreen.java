@@ -8,9 +8,8 @@ public class SplashScreen extends JWindow {
         JPanel content = new JPanel(new BorderLayout());
         content.setBackground(Color.WHITE);
 
-        // Set up an image for the splash screen (optional)
+        // Find Image
         JLabel splashImage = new JLabel(new ImageIcon("src/tetris.png"));
-
         content.add(splashImage, BorderLayout.CENTER);
 
         // Add the content panel to the window
